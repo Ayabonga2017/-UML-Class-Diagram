@@ -1,19 +1,33 @@
 package java;
 
-public class NewV extends Prac2{
+class  NewV {
+    interface Paint {
+        String colorMe();
+    }
 
-        int acpt = 1;
-        String name = "Aya";
+    public class Decorator implements Paint {
 
-
-        @Override
-        public String vName(String namex){
-            this.name = namex;
-            return super.vName(name);}
+        String color = "Colour me !!";
 
         @Override
-        public int accept(int acpt) {
-            this.acpt = acpt;
-            return super.accept(acpt);
+        public String colorMe() {
+            return color;
         }
+    }
+
+    public abstract class Colors implements Paint {
+        Paint p;
+        Decorator d;
+        @Override
+        public String colorMe() {
+            return p.colorMe(); }
+    }
+    public class RedPaint extends Colors {
+
+        public RedPaint() {
+            d.color = "Red paint";}
+
+        public String paintMe() {
+            return RedPaint.super.p.colorMe(); }
+    }
 }
