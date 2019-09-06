@@ -1,34 +1,56 @@
 package java;
 
 class  NewV {}
-interface ColorInter{
-    String color();
+interface PaintInter{
+    String paint();
 }
 
-class Deco implements ColorInter{
+class PlainHouse implements PaintInter{
     @Override
-    public String color() {
-        return "Color me";}
+    public String paint() {
+        return "Paint me";}
 }
 
-abstract class ReturnColor implements ColorInter{
+abstract class PaintHouse implements PaintInter{
 
-    private ColorInter colorInterface;
+    private PaintInter paintInterface;
 
-    public ReturnColor(ColorInter interF) {}
-    @Override
-    public String color(){
-        return colorInterface.color();}
+    public PaintHouse(PaintInter interF) {}
+
+    public String paint(){
+        return paintInterface.paint();}
 }
 
-class AddColor extends ReturnColor {
+class RedPaint extends PaintHouse {
 
-    public AddColor(ColorInter interF) {
+    public RedPaint(PaintInter interF) {
         super(interF);}
 
-    public String color() {
-        return super.color() + addRed();}
+    public String paint() {
+        return super.paint() + paintRed();}
 
-    private String addRed() {
+    private String paintRed() {
         return " with Red";}
+}
+class PinkPaint extends PaintHouse {
+
+    public PinkPaint(PaintInter interF) {
+        super(interF);}
+
+    public String paint() {
+        return super.paint() + paintPink();}
+
+    private String paintPink() {
+        return " with Pink";}
+}
+class BluePaint extends PaintHouse {
+
+    public BluePaint(PaintInter interF) {
+        super(interF);}
+
+    public String paint() {
+        return super.paint() + paintPink();}
+
+    private String paintPink() {
+        return " with Blue";}
 }
