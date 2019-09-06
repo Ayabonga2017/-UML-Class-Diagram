@@ -1,56 +1,55 @@
 package java;
 
-class  NewV {}
-interface PaintInter{
-    String paint();
+interface DecoInter{
+    String decorate();
 }
 
-class PlainHouse implements PaintInter{
+class PlainHouse implements DecoInter{
     @Override
-    public String paint() {
-        return "Paint me";}
+    public String decorate() {
+        return "Decorate";}
 }
 
-abstract class PaintHouse implements PaintInter{
+abstract class DecoHouse implements DecoInter{
 
-    private PaintInter paintInterface;
+    private DecoInter decoInterface;
 
-    public PaintHouse(PaintInter interF) {}
+    public DecoHouse(DecoInter interF) {}
 
-    public String paint(){
-        return paintInterface.paint();}
+    public String decorate(){
+        return decoInterface.decorate();}
 }
 
-class RedPaint extends PaintHouse {
+class AddPaint extends DecoHouse {
 
-    public RedPaint(PaintInter interF) {
+    public AddPaint(DecoInter interF) {
         super(interF);}
 
-    public String paint() {
-        return super.paint() + paintRed();}
+    public String decorate() {
+        return super.decorate() + paintRed();}
 
     private String paintRed() {
-        return " with Red";}
+        return " with a red paint";}
 }
-class PinkPaint extends PaintHouse {
+class AddLights extends DecoHouse {
 
-    public PinkPaint(PaintInter interF) {
+    public AddLights(DecoInter interF) {
+        super(interF);}
+
+    public String decorate() {
+        return super.decorate() + addLights();}
+
+    private String addLights() {
+        return " with lights";}
+}
+class AddDoor extends DecoHouse {
+
+    public AddDoor(DecoInter interF) {
         super(interF);}
 
     public String paint() {
-        return super.paint() + paintPink();}
+        return super.decorate() + glassDoor();}
 
-    private String paintPink() {
-        return " with Pink";}
-}
-class BluePaint extends PaintHouse {
-
-    public BluePaint(PaintInter interF) {
-        super(interF);}
-
-    public String paint() {
-        return super.paint() + paintPink();}
-
-    private String paintPink() {
-        return " with Blue";}
+    private String glassDoor() {
+        return " with a glass door";}
 }
